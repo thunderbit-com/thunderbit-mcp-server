@@ -28,7 +28,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thunderbit-engineering/thunderbit-mcp-server.git",
+    "url": "git+https://github.com/thunderbit-open/thunderbit-mcp-server.git",
     "directory": "packages/cli"
   },
   "homepage": "https://thunderbit.com/open-api",

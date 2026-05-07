@@ -22,16 +22,16 @@ Analyze a web page and suggest extraction fields using the `thunderbit_suggest_f
 3. Present the suggested fields in an **editable numbered table**:
 
    ```
-   AI 推荐了 N 个可提取字段：
+   AI suggested N extractable fields:
 
-   | #  | 字段名         | 类型   | 提取说明                   |
+   | #  | Field Name    | Type   | Instruction               |
    |----|---------------|--------|---------------------------|
-   | 1  | field_name    | TYPE   | instruction               |
+   | 1  | field_name    | TYPE   | how to extract this field |
    ...
 
-   您可以：
-   - 直接使用这些字段进行提取（调用 /extract）
-   - 用自然语言调整字段，例如："去掉第 2 个"、"新增一个 xxx 字段"
+   You can:
+   - Use these fields as-is for extraction (call /extract)
+   - Adjust fields in natural language, e.g. "remove #2", "add a new xxx field"
    ```
 
 4. If the user wants to proceed with extraction, guide them to use the `/extract` skill or the `thunderbit_extract` tool with the schema built from the fields.

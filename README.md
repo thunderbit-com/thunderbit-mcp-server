@@ -47,7 +47,7 @@ Edit your MCP client config:
 ### Claude Code Plugin
 
 ```bash
-claude plugin marketplace add thunderbit-engineering/thunderbit-mcp-server
+claude plugin marketplace add thunderbit-open/thunderbit-mcp-server
 claude plugin add thunderbit
 export THUNDERBIT_API_KEY=tb_your_api_key_here
 ```
@@ -74,7 +74,7 @@ Top up at [thunderbit.com/billing](https://thunderbit.com/billing).
 ## Development
 
 ```bash
-git clone https://github.com/thunderbit-engineering/thunderbit-mcp-server.git
+git clone https://github.com/thunderbit-open/thunderbit-mcp-server.git
 cd thunderbit-mcp-server
 # each package is independent
 cd packages/mcp-server && npm install

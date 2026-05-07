@@ -27,34 +27,34 @@ automatically discover fields first, then let the user edit via natural language
    b. Present the suggested fields in an **editable numbered table** using this format:
 
       ```
-      AI 推荐了 N 个可提取字段：
+      AI suggested N extractable fields:
 
-      | #  | 字段名         | 类型   | 提取说明                   | 状态 |
-      |----|---------------|--------|---------------------------|------|
-      | 1  | 区块高度       | NUMBER | 比特币区块的高度            | ✅   |
-      | 2  | 出块者地址     | TEXT   | 创建该区块的出块者地址       | ✅   |
-      | 3  | 总交易数       | NUMBER | 该区块中包含的交易总数量     | ✅   |
+      | #  | Field Name      | Type   | Instruction                          | Status |
+      |----|-----------------|--------|--------------------------------------|--------|
+      | 1  | block_height    | NUMBER | Height of the Bitcoin block          | ✅     |
+      | 2  | miner_address   | TEXT   | Address of the block producer        | ✅     |
+      | 3  | total_txs       | NUMBER | Total number of transactions in block| ✅     |
       ...
 
-      您可以用自然语言调整字段，例如：
-      - "去掉第 2 和第 4 个字段"
-      - "把'出块者地址'改名为'矿池地址'"
-      - "新增一个'矿池名称'文本字段，提取说明：出块矿池的名称"
-      - "只保留 1、3、5"
-      - "全部保留，直接提取"
+      You can adjust fields in natural language, for example:
+      - "remove fields #2 and #4"
+      - "rename 'miner_address' to 'pool_address'"
+      - "add a new 'pool_name' TEXT field, instruction: name of the mining pool"
+      - "keep only 1, 3, 5"
+      - "keep all, extract now"
 
-      请告诉我需要做什么调整？
+      What would you like to adjust?
       ```
 
    c. **Wait for user response** — interpret the user's natural language instructions:
-      - **删除/去掉/移除**: Remove specified fields by number or name
-      - **新增/添加/加一个**: Add a new field with name, type, and instruction
-      - **改名/重命名**: Rename a field
-      - **修改类型**: Change field type (TEXT/NUMBER/URL/EMAIL/DATE)
-      - **修改说明/instruction**: Update extraction instruction
-      - **只保留**: Keep only the specified fields, remove the rest
-      - **全部保留 / 直接提取 / 确认 / OK**: Accept current fields and proceed
-      - User may give **multiple instructions at once** (e.g. "去掉 2 和 4，新增一个矿池名称字段")
+      - **remove / delete / drop**: Remove specified fields by number or name
+      - **add / new / append**: Add a new field with name, type, and instruction
+      - **rename**: Rename a field
+      - **change type**: Change field type (TEXT/NUMBER/URL/EMAIL/DATE)
+      - **change instruction**: Update extraction instruction
+      - **keep only**: Keep only the specified fields, remove the rest
+      - **keep all / extract now / confirm / OK / proceed**: Accept current fields and proceed
+      - User may give **multiple instructions at once** (e.g. "remove 2 and 4, add a pool_name field")
 
    d. After each edit, **show the updated table** with the same numbered format so the user can verify. Repeat steps c-d until the user confirms.
 
@@ -81,7 +81,7 @@ automatically discover fields first, then let the user edit via natural language
 ## Field Editing Rules
 
 - Field types must be one of: `TEXT`, `NUMBER`, `URL`, `EMAIL`, `DATE`
-- When the user says "去掉 URL 类型的字段", remove all fields with type URL
+- When the user says "remove URL fields" or similar, remove all fields with type URL
 - When adding a field, infer reasonable defaults:
   - If no type specified, default to `TEXT`
   - If no instruction specified, generate one based on the field name and page context
