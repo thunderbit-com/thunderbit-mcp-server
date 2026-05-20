@@ -1,0 +1,17 @@
+{
+  "name": "thunderbit",
+  "owner": {
+    "name": "Thunderbit",
+    "email": "support@thunderbit.com"
+  },
+  "metadata": {
+    "description": "Thunderbit MCP marketplace: AI-powered web scraping and structured data extraction tools for Cursor."
+  },
+  "plugins": [
+    {
+      "name": "thunderbit",
+      "source": "packages/claude-plugin",
+      "description": "AI-powered web scraping and structured data extraction. Bundled MCP server and skills for distill, extract, suggest fields, and batch processing."
+    }
+  ]
+}

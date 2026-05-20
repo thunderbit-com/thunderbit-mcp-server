@@ -1,10 +1,11 @@
 {
   "name": "thunderbit",
+  "displayName": "Thunderbit",
   "version": "1.0.0",
   "description": "Thunderbit MCP + skills for AI-powered web scraping and structured data extraction. Convert any page to Markdown, extract structured data with JSON Schema, batch up to 100 URLs.",
   "author": {
     "name": "Thunderbit",
-    "url": "https://thunderbit.com"
+    "email": "support@thunderbit.com"
   },
   "homepage": "https://thunderbit.com/open-api",
   "repository": "https://github.com/thunderbit-open/thunderbit-mcp-server",
@@ -16,5 +17,13 @@
     "structured-data",
     "thunderbit",
     "rag"
-  ]
+  ],
+  "category": "developer-tools",
+  "tags": [
+    "web-scraping",
+    "mcp",
+    "data-extraction",
+    "ai"
+  ],
+  "skills": "./skills/"
 }

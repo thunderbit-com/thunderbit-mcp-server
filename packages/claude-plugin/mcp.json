@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "thunderbit": {
+      "command": "npx",
+      "args": ["-y", "@thunderbit/mcp-server"],
+      "env": {
+        "THUNDERBIT_API_KEY": "${env:THUNDERBIT_API_KEY}"
+      }
+    }
+  }
+}
