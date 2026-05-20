@@ -65,7 +65,7 @@ export THUNDERBIT_API_KEY=tb_your_api_key_here
 
 ## Pricing
 
-Distill — 1 credit. Extract — 20 credits. Suggest fields — 1 credit. Batch jobs scale per URL. Status polling is free.
+Distill — 1 credit. Extract — 20 credits. Suggest fields — free. Batch jobs scale per URL. Status polling is free.
 
 Top up at [thunderbit.com/billing](https://thunderbit.com/billing).
 

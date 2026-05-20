@@ -40,7 +40,8 @@ The skills will guide the model to pick the right MCP tool and parameters.
 
 | Tool | Cost |
 |------|------|
-| `suggest_fields`, `distill` | 1 credit |
+| `suggest_fields` | Free |
+| `distill` | 1 credit |
 | `extract` | 20 credits |
 | Batch jobs | 1 or 20 credits per URL |
 | Status polling | Free |

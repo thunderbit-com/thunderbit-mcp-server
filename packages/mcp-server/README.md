@@ -59,7 +59,7 @@ THUNDERBIT_API_KEY=tb_xxx npx -y @thunderbit/mcp-server
 
 | Tool | Cost | Purpose |
 |------|------|---------|
-| `thunderbit_suggest_fields` | 1 credit | Discover what data is on a page |
+| `thunderbit_suggest_fields` | Free | Discover what data is on a page |
 | `thunderbit_distill` | 1 credit | Page → clean Markdown |
 | `thunderbit_extract` | 20 credits | Page → structured JSON via schema |
 | `thunderbit_batch_distill_create` | 1 credit/URL | Distill up to 100 URLs |

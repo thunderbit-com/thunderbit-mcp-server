@@ -85,7 +85,7 @@ export function registerTools(server, client) {
     {
       title: "Suggest Extractable Fields",
       description:
-        "Analyze a web page and automatically suggest extractable fields/columns. Start here when you don't know what data a page contains — returns field names, types, and extraction instructions usable directly with thunderbit_extract. Costs 1 credit per call.",
+        "Analyze a web page and automatically suggest extractable fields/columns. Start here when you don't know what data a page contains — returns field names, types, and extraction instructions usable directly with thunderbit_extract. Free — no credits consumed.",
       inputSchema: {
         url: z.string().url().describe("Web page URL to analyze"),
         prompt: z.string().optional().describe("Optional guidance for what fields to suggest"),
