@@ -106,7 +106,7 @@ Errors are returned as MCP tool errors (`isError: true`) so the AI can react gra
 ## Local Development
 
 ```bash
-git clone https://github.com/thunderbit-open/thunderbit-mcp-server.git
+git clone https://github.com/thunderbit-com/thunderbit-mcp-server.git
 cd thunderbit-mcp-server/packages/mcp-server
 npm install
 THUNDERBIT_API_KEY=tb_xxx node bin/cli.js

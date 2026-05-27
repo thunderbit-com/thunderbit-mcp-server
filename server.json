@@ -1,17 +1,17 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.thunderbit-open/thunderbit-mcp-server",
+  "name": "io.github.thunderbit-com/thunderbit-mcp-server",
   "description": "AI-powered web scraping MCP. Distill pages to Markdown or extract structured data via JSON Schema.",
   "repository": {
-    "url": "https://github.com/thunderbit-open/thunderbit-mcp-server",
+    "url": "https://github.com/thunderbit-com/thunderbit-mcp-server",
     "source": "github"
   },
-  "version": "1.0.3",
+  "version": "1.0.4",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@thunderbit/mcp-server",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "transport": {
         "type": "stdio"
       },

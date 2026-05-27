@@ -7,7 +7,7 @@
     "url": "https://thunderbit.com"
   },
   "homepage": "https://thunderbit.com/open-api",
-  "repository": "https://github.com/thunderbit-open/thunderbit-mcp-server",
+  "repository": "https://github.com/thunderbit-com/thunderbit-mcp-server",
   "license": "MIT",
   "keywords": [
     "web-scraping",

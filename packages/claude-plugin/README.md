@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-claude plugin marketplace add thunderbit-open/thunderbit-mcp-server
+claude plugin marketplace add thunderbit-com/thunderbit-mcp-server
 claude plugin add thunderbit
 ```
 
