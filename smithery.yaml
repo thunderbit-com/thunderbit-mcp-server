@@ -10,7 +10,7 @@ startCommand:
     properties:
       apiKey:
         type: string
-        description: "Your Thunderbit API key (tb_...). Get one at https://app.thunderbit.com/console"
+        description: "Your Thunderbit API key (tb_...). Get one at https://app.thunderbit.com/console/api-keys"
   commandFunction:
     # A function that produces the CLI command to start the MCP on stdio.
     |-

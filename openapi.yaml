@@ -17,6 +17,16 @@ info:
   license:
     name: MIT
     url: https://github.com/thunderbit-com/thunderbit-mcp-server/blob/main/LICENSE
+  x-providerName: thunderbit.com
+  x-origin:
+    - format: openapi
+      url: https://raw.githubusercontent.com/thunderbit-com/thunderbit-mcp-server/main/openapi.yaml
+      version: "3.1"
+  x-apisguru-categories:
+    - developer_tools
+    - machine_learning
+  x-logo:
+    url: https://storage.googleapis.com/thunderbit-public-resources/thunderbit_image.png
 servers:
   - url: https://openapi.thunderbit.com
     description: Production
