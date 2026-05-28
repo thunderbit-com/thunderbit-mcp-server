@@ -9,7 +9,7 @@ claude plugin marketplace add thunderbit-com/thunderbit-mcp-server
 claude plugin add thunderbit
 ```
 
-Then set your API key (get one at [app.thunderbit.com/console](https://app.thunderbit.com/console)):
+Then set your API key (get one at [app.thunderbit.com/console/api-keys](https://app.thunderbit.com/console/api-keys)):
 
 ```bash
 export THUNDERBIT_API_KEY=tb_your_api_key_here

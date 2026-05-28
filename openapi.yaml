@@ -9,11 +9,11 @@ info:
     - **Suggest fields** — analyze a page and suggest extractable fields (free).
     - **Batch** — run distill or extract over up to 100 URLs at once; poll for results (status polling is free).
 
-    All endpoints require a Bearer API key. Get a free key at https://app.thunderbit.com/console.
+    All endpoints require a Bearer API key. Get a free key at https://app.thunderbit.com/console/api-keys.
   version: 1.0.4
   contact:
     name: Thunderbit
-    url: https://app.thunderbit.com/console
+    url: https://thunderbit.com/docs/introduction
   license:
     name: MIT
     url: https://github.com/thunderbit-com/thunderbit-mcp-server/blob/main/LICENSE

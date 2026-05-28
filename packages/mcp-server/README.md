@@ -12,7 +12,7 @@ A Model Context Protocol (MCP) server that lets AI assistants:
 - Get **AI-suggested fields** for unknown page structures
 - Run **batch jobs** on up to 100 URLs at a time
 
-Backed by the Thunderbit Open API. Get a free API key at [app.thunderbit.com/console](https://app.thunderbit.com/console).
+Backed by the Thunderbit Open API. Get a free API key at [app.thunderbit.com/console/api-keys](https://app.thunderbit.com/console/api-keys).
 
 ---
 

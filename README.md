@@ -6,7 +6,7 @@
 [![npm: @thunderbit/thunderbit-cli](https://img.shields.io/npm/v/@thunderbit/thunderbit-cli.svg?label=%40thunderbit%2Fcli)](https://npmjs.com/package/@thunderbit/thunderbit-cli)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-This monorepo ships three packages, all backed by the [Thunderbit Open API](https://app.thunderbit.com/console):
+This monorepo ships three packages, all backed by the [Thunderbit Open API](https://thunderbit.com/docs/introduction):
 
 | Package | Purpose | Audience |
 |---------|---------|----------|
@@ -14,7 +14,7 @@ This monorepo ships three packages, all backed by the [Thunderbit Open API](http
 | [`@thunderbit/mcp-server`](packages/mcp-server) | Model Context Protocol server (7 tools) | AI assistants — Claude Desktop, Cursor, Cline, Claude Code |
 | [`thunderbit` Claude Code plugin](packages/claude-plugin) | Bundled MCP + 4 skills | Claude Code users |
 
-Get a free API key at [app.thunderbit.com/console](https://app.thunderbit.com/console).
+Get a free API key at [app.thunderbit.com/console/api-keys](https://app.thunderbit.com/console/api-keys).
 
 ---
 
