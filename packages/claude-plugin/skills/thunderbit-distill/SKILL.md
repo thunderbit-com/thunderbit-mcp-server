@@ -28,7 +28,7 @@ Convert a web page to clean Markdown using the `thunderbit_distill` MCP tool.
 ## Error Handling
 
 - **401**: "API Key invalid. Check your THUNDERBIT_API_KEY environment variable."
-- **402**: "Insufficient credits. Top up at https://thunderbit.com/billing"
+- **402**: "Insufficient credits. Top up at https://app.thunderbit.com/console/billing"
 - **429**: "Rate limit exceeded. Please try again shortly."
 - **Timeout**: "Page load timed out. Try increasing timeout or switching renderMode to 'full'."
 

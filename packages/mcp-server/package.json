@@ -14,7 +14,7 @@
     "claude",
     "thunderbit"
   ],
-  "homepage": "https://thunderbit.com/open-api",
+  "homepage": "https://app.thunderbit.com/console",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thunderbit-com/thunderbit-mcp-server.git",

@@ -231,7 +231,7 @@ class ThunderbitClient {
             return;
           }
           if (statusCode === 402) {
-            reject(new ApiError('Insufficient credits. Top up at https://thunderbit.com/billing', statusCode));
+            reject(new ApiError('Insufficient credits. Top up at https://app.thunderbit.com/console/billing', statusCode));
             return;
           }
           if (statusCode === 429) {

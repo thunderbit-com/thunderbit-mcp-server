@@ -31,6 +31,6 @@
     "url": "git+https://github.com/thunderbit-com/thunderbit-mcp-server.git",
     "directory": "packages/cli"
   },
-  "homepage": "https://thunderbit.com/open-api",
+  "homepage": "https://app.thunderbit.com/console",
   "license": "MIT"
 }

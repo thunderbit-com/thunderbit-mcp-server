@@ -20,7 +20,7 @@ function wrap(fn) {
     } catch (e) {
       if (e instanceof ApiError) {
         const hint = e.status === 402
-          ? " — Top up at https://thunderbit.com/billing"
+          ? " — Top up at https://app.thunderbit.com/console/billing"
           : e.status === 401
           ? " — Check your API key at https://app.thunderbit.com/console"
           : e.status === 429

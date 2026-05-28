@@ -50,7 +50,7 @@ Process multiple URLs in batch mode. Supports two modes:
 ## Error Handling
 
 - **401**: "API Key invalid. Check your THUNDERBIT_API_KEY environment variable."
-- **402**: "Insufficient credits. Top up at https://thunderbit.com/billing"
+- **402**: "Insufficient credits. Top up at https://app.thunderbit.com/console/billing"
 - **429**: "Rate limit exceeded. Please try again shortly."
 - **Job failed**: Report the failure reason and list of failed URLs.
 

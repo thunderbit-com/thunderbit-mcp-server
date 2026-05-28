@@ -13,7 +13,7 @@ info:
   version: 1.0.4
   contact:
     name: Thunderbit
-    url: https://thunderbit.com/open-api
+    url: https://app.thunderbit.com/console
   license:
     name: MIT
     url: https://github.com/thunderbit-com/thunderbit-mcp-server/blob/main/LICENSE
@@ -273,7 +273,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     InsufficientCredits:
-      description: Not enough credits. Top up at https://thunderbit.com/billing
+      description: Not enough credits. Top up at https://app.thunderbit.com/console/billing
       content:
         application/json:
           schema:
