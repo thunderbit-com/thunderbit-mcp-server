@@ -1,7 +1,7 @@
 {
   "name": "@thunderbit/mcp-server",
-  "version": "1.0.3",
-  "mcpName": "io.github.thunderbit-open/thunderbit-mcp-server",
+  "version": "1.0.4",
+  "mcpName": "io.github.thunderbit-com/thunderbit-mcp-server",
   "description": "Thunderbit MCP Server — AI-powered web scraping and structured data extraction for Claude, ChatGPT, and other MCP-compatible AI assistants.",
   "keywords": [
     "mcp",
@@ -14,14 +14,14 @@
     "claude",
     "thunderbit"
   ],
-  "homepage": "https://thunderbit.com/open-api",
+  "homepage": "https://thunderbit.com/docs/mcp",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thunderbit-open/thunderbit-mcp-server.git",
+    "url": "git+https://github.com/thunderbit-com/thunderbit-mcp-server.git",
     "directory": "packages/mcp-server"
   },
   "bugs": {
-    "url": "https://github.com/thunderbit-open/thunderbit-mcp-server/issues"
+    "url": "https://github.com/thunderbit-com/thunderbit-mcp-server/issues"
   },
   "license": "MIT",
   "author": "Thunderbit",

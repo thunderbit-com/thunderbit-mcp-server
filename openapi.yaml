@@ -1,0 +1,642 @@
+openapi: 3.1.0
+info:
+  title: Thunderbit Open API
+  description: |
+    AI-powered web scraping and structured data extraction.
+
+    - **Distill** — convert any web page into clean, LLM-ready Markdown (1 credit/request).
+    - **Extract** — extract structured data from a web page using a JSON Schema (20 credits/request).
+    - **Suggest fields** — analyze a page and suggest extractable fields (free).
+    - **Batch** — run distill or extract over up to 100 URLs at once; poll for results (status polling is free).
+
+    All endpoints require a Bearer API key. Get a free key at https://app.thunderbit.com/console/api-keys.
+  version: 1.0.4
+  contact:
+    name: Thunderbit
+    url: https://thunderbit.com/docs/introduction
+  termsOfService: https://thunderbit.com/terms
+  license:
+    name: MIT
+    url: https://github.com/thunderbit-com/thunderbit-mcp-server/blob/main/LICENSE
+  x-providerName: thunderbit.com
+  x-origin:
+    - format: openapi
+      url: https://raw.githubusercontent.com/thunderbit-com/thunderbit-mcp-server/main/openapi.yaml
+      version: "3.1"
+  x-apisguru-categories:
+    - developer_tools
+    - machine_learning
+  x-logo:
+    url: https://storage.googleapis.com/thunderbit-public-resources/thunderbit_image.png
+servers:
+  - url: https://openapi.thunderbit.com
+    description: Production
+security:
+  - bearerAuth: []
+tags:
+  - name: Distill
+    description: Convert web pages to Markdown
+  - name: Extract
+    description: Extract structured data
+  - name: Suggest Fields
+    description: Discover extractable fields
+  - name: Batch
+    description: Batch jobs over multiple URLs
+paths:
+  /openapi/v1/distill:
+    post:
+      tags: [Distill]
+      summary: Distill a web page to Markdown
+      description: Convert a single web page into clean, LLM-ready Markdown. Costs 1 credit.
+      operationId: distill
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DistillRequest'
+      responses:
+        '200':
+          description: Distilled page
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DistillResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/InsufficientCredits'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+
+  /openapi/v1/extract:
+    post:
+      tags: [Extract]
+      summary: Extract structured data from a web page
+      description: Extract structured data from a single web page using a JSON Schema. Costs 20 credits.
+      operationId: extract
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExtractRequest'
+      responses:
+        '200':
+          description: Extracted data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExtractResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/InsufficientCredits'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+
+  /openapi/v1/suggest_fields:
+    post:
+      tags: [Suggest Fields]
+      summary: Suggest extractable fields for a web page
+      description: Analyze a page and return suggested fields, types, and a ready-to-use JSON Schema. Free — no credits consumed.
+      operationId: suggestFields
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SuggestFieldsRequest'
+      responses:
+        '200':
+          description: Suggested fields
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuggestFieldsResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+
+  /openapi/v1/batch/distill:
+    post:
+      tags: [Batch]
+      summary: Create a batch distill job
+      description: Distill up to 100 URLs into Markdown. Returns a job ID — poll the status endpoint until complete. Costs 1 credit per URL.
+      operationId: createBatchDistill
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchDistillRequest'
+      responses:
+        '200':
+          description: Job created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchJobResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/InsufficientCredits'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+
+  /openapi/v1/batch/distill/{id}:
+    get:
+      tags: [Batch]
+      summary: Get batch distill job status and results
+      description: Poll the status and retrieve paginated results of a batch distill job. Free.
+      operationId: getBatchDistillStatus
+      parameters:
+        - $ref: '#/components/parameters/JobId'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Job status and results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchDistillStatusResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags: [Batch]
+      summary: Cancel a batch distill job
+      operationId: cancelBatchDistill
+      parameters:
+        - $ref: '#/components/parameters/JobId'
+      responses:
+        '200':
+          description: Job cancelled
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /openapi/v1/batch/extract:
+    post:
+      tags: [Batch]
+      summary: Create a batch extract job
+      description: Extract structured data from up to 100 URLs using one JSON Schema. Returns a job ID — poll the status endpoint until complete. Costs 20 credits per URL.
+      operationId: createBatchExtract
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchExtractRequest'
+      responses:
+        '200':
+          description: Job created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchJobResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/InsufficientCredits'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+
+  /openapi/v1/batch/extract/{id}:
+    get:
+      tags: [Batch]
+      summary: Get batch extract job status and results
+      description: Poll the status and retrieve paginated results of a batch extract job. Free.
+      operationId: getBatchExtractStatus
+      parameters:
+        - $ref: '#/components/parameters/JobId'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Job status and results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchExtractStatusResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      tags: [Batch]
+      summary: Cancel a batch extract job
+      operationId: cancelBatchExtract
+      parameters:
+        - $ref: '#/components/parameters/JobId'
+      responses:
+        '200':
+          description: Job cancelled
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Thunderbit API key (tb_...). Send as: Authorization: Bearer <THUNDERBIT_API_KEY>'
+
+  parameters:
+    JobId:
+      name: id
+      in: path
+      required: true
+      description: Job ID returned when the batch job was created.
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page number, 0-based.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    PageSize:
+      name: pageSize
+      in: query
+      required: false
+      description: Results per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InsufficientCredits:
+      description: Not enough credits. Top up at https://app.thunderbit.com/console/billing
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimited:
+      description: Rate limit exceeded (QPS/QPM/QPD).
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Job not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+  schemas:
+    DistillRequest:
+      type: object
+      required: [url]
+      properties:
+        url:
+          type: string
+          format: uri
+          description: Web page URL to convert.
+        timeout:
+          type: integer
+          minimum: 5000
+          maximum: 60000
+          default: 30000
+          description: Request timeout in milliseconds.
+        waitFor:
+          type: integer
+          minimum: 0
+          maximum: 10000
+          default: 0
+          description: Wait time after page load for dynamic content (ms).
+        includeTags:
+          type: array
+          items: { type: string }
+          description: HTML tags to include.
+        excludeTags:
+          type: array
+          items: { type: string }
+          description: HTML tags to exclude.
+        headers:
+          type: object
+          additionalProperties: { type: string }
+          description: Custom request headers.
+        countryCode:
+          type: string
+          minLength: 2
+          maxLength: 2
+          default: US
+          description: ISO 2-letter country code for the request origin.
+        includeHtml:
+          type: boolean
+          default: false
+          description: Include raw HTML alongside Markdown.
+        extractLinks:
+          type: boolean
+          default: false
+          description: Return extracted links.
+        renderMode:
+          type: string
+          enum: [none, basic, full]
+          default: none
+          description: Page render mode.
+        forceRefresh:
+          type: boolean
+          default: false
+          description: Bypass cache and re-fetch.
+
+    DistillResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            url: { type: string }
+            markdown: { type: string }
+            html: { type: string }
+            summary: { type: string }
+            answer: { type: string }
+            highlights:
+              type: array
+              items: { type: string }
+            links:
+              type: array
+              items: { $ref: '#/components/schemas/Link' }
+            images:
+              type: array
+              items: { $ref: '#/components/schemas/ImageItem' }
+            metadata:
+              $ref: '#/components/schemas/Metadata'
+        error:
+          $ref: '#/components/schemas/ErrorInfo'
+
+    ExtractRequest:
+      type: object
+      required: [url, schema]
+      properties:
+        url:
+          type: string
+          format: uri
+          description: Web page URL.
+        schema:
+          type: object
+          additionalProperties: true
+          description: JSON Schema defining the data structure to extract.
+        formats:
+          type: array
+          items: {}
+          description: Optional output formats.
+        timeout:
+          type: integer
+          minimum: 5000
+          maximum: 120000
+          default: 60000
+        waitFor:
+          type: integer
+          minimum: 0
+          maximum: 10000
+          default: 0
+        renderMode:
+          type: string
+          enum: [none, basic, full]
+          default: none
+
+    ExtractResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            url: { type: string }
+            data:
+              type: array
+              description: Extracted rows, each a map of field name to value.
+              items:
+                type: object
+                additionalProperties: { type: string }
+            links:
+              type: array
+              items: { $ref: '#/components/schemas/Link' }
+            images:
+              type: array
+              items: { $ref: '#/components/schemas/ImageItem' }
+            summary: { type: string }
+            answer: { type: string }
+            highlights:
+              type: array
+              items: { type: string }
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+
+    SuggestFieldsRequest:
+      type: object
+      required: [url]
+      properties:
+        url:
+          type: string
+          format: uri
+          description: Web page URL to analyze.
+        prompt:
+          type: string
+          description: Optional guidance for which fields to suggest.
+        countryCode:
+          type: string
+          minLength: 2
+          maxLength: 2
+
+    SuggestFieldsResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            url: { type: string }
+            title: { type: string }
+            fields:
+              type: array
+              items:
+                type: object
+                properties:
+                  name: { type: string }
+                  type: { type: string }
+                  instruction: { type: string }
+            schema:
+              type: object
+              additionalProperties: true
+              description: Ready-to-use JSON Schema, usable directly as the extract `schema`.
+            firstSubpageUrl: { type: string }
+        error:
+          $ref: '#/components/schemas/ErrorInfo'
+
+    BatchDistillRequest:
+      type: object
+      required: [urls]
+      properties:
+        urls:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            type: string
+            format: uri
+        timeout:
+          type: integer
+          minimum: 5000
+          maximum: 60000
+
+    BatchExtractRequest:
+      type: object
+      required: [urls, schema]
+      properties:
+        urls:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            type: string
+            format: uri
+        schema:
+          type: object
+          additionalProperties: true
+          description: JSON Schema applied to every URL.
+        timeout:
+          type: integer
+          minimum: 5000
+          maximum: 120000
+
+    BatchJobResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/BatchJobData'
+
+    BatchJobData:
+      type: object
+      properties:
+        id: { type: string }
+        status: { $ref: '#/components/schemas/BatchJobStatus' }
+        total: { type: integer }
+        completed: { type: integer }
+        creditsUsed: { type: integer }
+        createdAt: { type: string, format: date-time }
+        completedAt: { type: string, format: date-time }
+
+    BatchDistillStatusResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            id: { type: string }
+            status: { $ref: '#/components/schemas/BatchJobStatus' }
+            total: { type: integer }
+            completed: { type: integer }
+            failed: { type: integer }
+            creditsUsed: { type: integer }
+            createdAt: { type: string, format: date-time }
+            completedAt: { type: string, format: date-time }
+            results:
+              type: array
+              items:
+                type: object
+                properties:
+                  index: { type: integer }
+                  url: { type: string }
+                  success: { type: boolean }
+                  markdown: { type: string }
+                  error: { $ref: '#/components/schemas/ErrorInfo' }
+
+    BatchExtractStatusResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            id: { type: string }
+            status: { $ref: '#/components/schemas/BatchJobStatus' }
+            total: { type: integer }
+            completed: { type: integer }
+            failed: { type: integer }
+            creditsUsed: { type: integer }
+            createdAt: { type: string, format: date-time }
+            completedAt: { type: string, format: date-time }
+            results:
+              type: array
+              items:
+                type: object
+                properties:
+                  index: { type: integer }
+                  url: { type: string }
+                  success: { type: boolean }
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      additionalProperties: { type: string }
+                  error: { $ref: '#/components/schemas/ErrorInfo' }
+
+    BatchJobStatus:
+      type: string
+      enum: [pending, processing, completed, failed, cancelled, unknown]
+
+    Link:
+      type: object
+      properties:
+        text: { type: string }
+        href: { type: string }
+
+    ImageItem:
+      type: object
+      properties:
+        src: { type: string }
+        alt: { type: string }
+
+    Metadata:
+      type: object
+      properties:
+        title: { type: string }
+        description: { type: string }
+        language: { type: string }
+        sourceUrl: { type: string }
+        statusCode: { type: integer }
+
+    ErrorInfo:
+      type: object
+      properties:
+        code: { type: string }
+        message: { type: string }
+
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          $ref: '#/components/schemas/ErrorInfo'

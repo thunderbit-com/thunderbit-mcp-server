@@ -6,7 +6,7 @@
 [![npm: @thunderbit/thunderbit-cli](https://img.shields.io/npm/v/@thunderbit/thunderbit-cli.svg?label=%40thunderbit%2Fcli)](https://npmjs.com/package/@thunderbit/thunderbit-cli)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-This monorepo ships three packages, all backed by the [Thunderbit Open API](https://thunderbit.com/open-api):
+This monorepo ships three packages, all backed by the [Thunderbit Open API](https://thunderbit.com/docs/introduction):
 
 | Package | Purpose | Audience |
 |---------|---------|----------|
@@ -14,7 +14,7 @@ This monorepo ships three packages, all backed by the [Thunderbit Open API](http
 | [`@thunderbit/mcp-server`](packages/mcp-server) | Model Context Protocol server (7 tools) | AI assistants — Claude Desktop, Cursor, Cline, Claude Code |
 | [`thunderbit` Claude Code plugin](packages/claude-plugin) | Bundled MCP + 4 skills | Claude Code users |
 
-Get a free API key at [thunderbit.com/open-api](https://thunderbit.com/open-api).
+Get a free API key at [app.thunderbit.com/console/api-keys](https://app.thunderbit.com/console/api-keys).
 
 ---
 
@@ -47,7 +47,7 @@ Edit your MCP client config:
 ### Claude Code Plugin
 
 ```bash
-claude plugin marketplace add thunderbit-open/thunderbit-mcp-server
+claude plugin marketplace add thunderbit-com/thunderbit-mcp-server
 claude plugin add thunderbit
 export THUNDERBIT_API_KEY=tb_your_api_key_here
 ```
@@ -67,19 +67,25 @@ export THUNDERBIT_API_KEY=tb_your_api_key_here
 
 Distill — 1 credit. Extract — 20 credits. Suggest fields — free. Batch jobs scale per URL. Status polling is free.
 
-Top up at [thunderbit.com/billing](https://thunderbit.com/billing).
+Top up at [app.thunderbit.com/console/billing](https://app.thunderbit.com/console/billing).
 
 ---
 
 ## Development
 
 ```bash
-git clone https://github.com/thunderbit-open/thunderbit-mcp-server.git
+git clone https://github.com/thunderbit-com/thunderbit-mcp-server.git
 cd thunderbit-mcp-server
 # each package is independent
 cd packages/mcp-server && npm install
 cd packages/cli && npm install
 ```
+
+---
+
+## API Reference
+
+The full HTTP contract is documented in [`openapi.yaml`](openapi.yaml) (OpenAPI 3.1) — base URL `https://openapi.thunderbit.com`, Bearer auth with your `THUNDERBIT_API_KEY`.
 
 ---
 

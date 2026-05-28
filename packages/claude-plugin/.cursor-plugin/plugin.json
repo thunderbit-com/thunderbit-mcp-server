@@ -7,8 +7,8 @@
     "name": "Thunderbit",
     "email": "support@thunderbit.com"
   },
-  "homepage": "https://thunderbit.com/open-api",
-  "repository": "https://github.com/thunderbit-open/thunderbit-mcp-server",
+  "homepage": "https://thunderbit.com/docs/mcp",
+  "repository": "https://github.com/thunderbit-com/thunderbit-mcp-server",
   "license": "MIT",
   "keywords": [
     "web-scraping",

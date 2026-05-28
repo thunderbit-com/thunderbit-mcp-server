@@ -1,6 +1,6 @@
 {
   "name": "@thunderbit/thunderbit-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI for Thunderbit Open API — distill, extract, and suggest fields from web pages",
   "main": "src/client.js",
   "bin": {
@@ -28,9 +28,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thunderbit-open/thunderbit-mcp-server.git",
+    "url": "git+https://github.com/thunderbit-com/thunderbit-mcp-server.git",
     "directory": "packages/cli"
   },
-  "homepage": "https://thunderbit.com/open-api",
+  "homepage": "https://thunderbit.com/docs/api-reference/overview",
   "license": "MIT"
 }

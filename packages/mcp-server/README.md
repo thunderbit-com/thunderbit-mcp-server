@@ -12,7 +12,7 @@ A Model Context Protocol (MCP) server that lets AI assistants:
 - Get **AI-suggested fields** for unknown page structures
 - Run **batch jobs** on up to 100 URLs at a time
 
-Backed by the Thunderbit Open API. Get a free API key at [thunderbit.com/open-api](https://thunderbit.com/open-api).
+Backed by the Thunderbit Open API. Get a free API key at [app.thunderbit.com/console/api-keys](https://app.thunderbit.com/console/api-keys).
 
 ---
 
@@ -96,7 +96,7 @@ API key precedence: tool-call `apiKey` argument → `THUNDERBIT_API_KEY` env var
 | HTTP Status | Hint |
 |-------------|------|
 | 401 | Invalid API key — check `THUNDERBIT_API_KEY` |
-| 402 | Out of credits — top up at [thunderbit.com/billing](https://thunderbit.com/billing) |
+| 402 | Out of credits — top up at [app.thunderbit.com/console/billing](https://app.thunderbit.com/console/billing) |
 | 429 | Rate-limit exceeded — retry later |
 
 Errors are returned as MCP tool errors (`isError: true`) so the AI can react gracefully.
@@ -106,7 +106,7 @@ Errors are returned as MCP tool errors (`isError: true`) so the AI can react gra
 ## Local Development
 
 ```bash
-git clone https://github.com/thunderbit-open/thunderbit-mcp-server.git
+git clone https://github.com/thunderbit-com/thunderbit-mcp-server.git
 cd thunderbit-mcp-server/packages/mcp-server
 npm install
 THUNDERBIT_API_KEY=tb_xxx node bin/cli.js

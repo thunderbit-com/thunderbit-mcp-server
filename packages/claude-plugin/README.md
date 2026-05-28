@@ -5,11 +5,11 @@
 ## Install
 
 ```bash
-claude plugin marketplace add thunderbit-open/thunderbit-mcp-server
+claude plugin marketplace add thunderbit-com/thunderbit-mcp-server
 claude plugin add thunderbit
 ```
 
-Then set your API key (get one at [thunderbit.com/open-api](https://thunderbit.com/open-api)):
+Then set your API key (get one at [app.thunderbit.com/console/api-keys](https://app.thunderbit.com/console/api-keys)):
 
 ```bash
 export THUNDERBIT_API_KEY=tb_your_api_key_here
@@ -46,7 +46,7 @@ The skills will guide the model to pick the right MCP tool and parameters.
 | Batch jobs | 1 or 20 credits per URL |
 | Status polling | Free |
 
-Top up at [thunderbit.com/billing](https://thunderbit.com/billing).
+Top up at [app.thunderbit.com/console/billing](https://app.thunderbit.com/console/billing).
 
 ## License
 

@@ -20,10 +20,13 @@ FROM node:20-alpine AS runtime
 
 WORKDIR /app
 
-COPY --from=builder /build /app
+# Copy as the unprivileged 'node' user that ships with the official image,
+# so the runtime stage doesn't run as root.
+COPY --from=builder --chown=node:node /build /app
 
 # MCP server speaks JSON-RPC over stdio — no port to expose.
 # THUNDERBIT_API_KEY is supplied at runtime via `docker run -e THUNDERBIT_API_KEY=...`
 ENV NODE_ENV=production
+USER node
 
 ENTRYPOINT ["node", "bin/cli.js"]
