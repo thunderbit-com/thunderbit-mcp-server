@@ -14,6 +14,7 @@ info:
   contact:
     name: Thunderbit
     url: https://thunderbit.com/docs/introduction
+  termsOfService: https://thunderbit.com/terms
   license:
     name: MIT
     url: https://github.com/thunderbit-com/thunderbit-mcp-server/blob/main/LICENSE
